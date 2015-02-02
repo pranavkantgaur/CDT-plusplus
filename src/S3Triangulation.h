@@ -47,11 +47,16 @@
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
 // Used so that each timeslice is assigned an integer
-typedef CGAL::Triangulation_3<K>  Triangulation;
-typedef CGAL::Triangulation_vertex_base_with_info_3<unsigned, K> Vb;
-typedef CGAL::Triangulation_cell_base_with_info_3<unsigned, K> Cb;
-typedef CGAL::Triangulation_data_structure_3<Vb, Cb> Tds;
-typedef CGAL::Delaunay_triangulation_3<K, Tds> Delaunay;
+// typedef CGAL::Triangulation_3<K>  Triangulation;
+// typedef CGAL::Triangulation_vertex_base_with_info_3<unsigned, K> Vb;
+// typedef CGAL::Triangulation_cell_base_with_info_3<unsigned, K> Cb;
+// typedef CGAL::Triangulation_data_structure_3<Vb, Cb> Tds;
+// Parallel insertion capable with integer timeslices
+typedef CGAL::Triangulation_data_structure_3<
+  CGAL::Triangulation_vertex_base_with_info_3<unsigned, K>,
+  CGAL::Triangulation_cell_base_with_info_3<unsigned, K>,
+  CGAL::Parallel_tag>                           Tds;
+typedef CGAL::Delaunay_triangulation_3<K, Tds>  Delaunay;
 typedef Delaunay::Cell_handle Cell_handle;
 typedef Delaunay::Vertex_handle Vertex_handle;
 typedef Delaunay::Locate_type Locate_type;
