@@ -75,7 +75,7 @@ if ( CGAL_FOUND )
 else()
 
     message(STATUS "This program requires the CGAL library, and will not be compiled.")
-
+    return()
 endif()
 
 # GMock Tests executable
