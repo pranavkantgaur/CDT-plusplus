@@ -6,6 +6,7 @@ CDT-plusplus [![Build Status](https://travis-ci.org/acgetchell/CDT-plusplus.png?
 with [CMake][3] using [Clang][4]/[LLVM][5].
 Arbitrary-precision numbers and functions by [MPFR][29] and [GMP][30].
 [Docopt][19] provides a beautiful command-line interface.
+[TBB][32] adds parallel insertion and deletions to the Delaunay triangulations.
 [Gmock 1.7][6] may be optionally installed in order to build/run unit tests.
 [Ninja][18] is a nice (but optional) replacement for `make`.
 Follows (mostly) the [Google C++ Style Guide][7], which
@@ -28,6 +29,7 @@ The goals and targets of this project are:
 - [x] 2+1 foliation
 - [x] Integrate [docopt][19] CLI
 - [x] S3 Bulk action
+- [ ] Parallel inserts and deletes
 - [ ] S3 Boundary action
 - [ ] 3D Ergodic moves
 - [ ] Metropolis algorithm
@@ -54,15 +56,16 @@ Prerequisites:
 ------
 
 CDT++ should build on any system (e.g. Linux, MacOS, Windows) with
-[CMake][14], [CGAL][15], and [Eigen][25] installed. [Gmock][6] is optional
-for running the unit tests, and [Ninja][18] is an optional replacement for
-`make` which provides quick parallel builds of the unit tests.
+[CMake][14], [CGAL][15], [Eigen][25], and [TBB][31] installed. [Gmock][6] is
+optional for running the unit tests, and [Ninja][18] is an optional
+replacement for `make` which provides quick parallel builds of the unit tests.
 
 On MacOS, the easiest way to do this is with [HomeBrew][16]:
 
 ~~~
 # brew install cmake
 # brew install eigen
+# brew install tbb --c++11
 # brew install cgal --imaging --with-eigen3 --with-lapack
 # brew install ninja
 ~~~
@@ -71,6 +74,7 @@ On Ubuntu, you can do this via:
 ~~~
 # sudo apt-get install cmake
 # sudo apt-get install libeigen3-dev
+# sudo apt-get install libtbb-dev
 # sudo apt-get install libcgal-dev
 # sudo apt-get install ninja-build
 ~~~
@@ -264,3 +268,4 @@ build/Testing directory which is generated thereby.
 [29]: http://www.mpfr.org
 [30]: https://gmplib.org
 [31]: http://www.paraview.org
+[32]: https://www.threadingbuildingblocks.org/
