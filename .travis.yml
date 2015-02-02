@@ -23,6 +23,7 @@ install:
   #- sudo ninja install &> install.log
   #- cd ..
   - brew install tbb
+  - brew unlink cgal
   - brew install cgal
 script:
   - curl -O https://googlemock.googlecode.com/files/gmock-1.7.0.zip
