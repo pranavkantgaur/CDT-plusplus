@@ -41,10 +41,19 @@ if ( CGAL_FOUND )
   if (EIGEN3_FOUND)
       include( ${EIGEN3_USE_FILE})
 
-      include_directories (BEFORE "../../include")
+      find_package( TBB QUIET)
+      if (TBB_FOUND)
+        include( ${TBB_USE_FILE})
 
-      #create_single_source_cgal_program( "src/cdt.cpp" )
-      create_single_source_cgal_program( "src/cdt.cpp" "src/docopt/docopt.cpp")
+        list(APPEND CGAL_3RD_PARTY_LIBRARIES ${TBB_LIBRARIES})
+
+        include_directories (BEFORE "../../include")
+
+        #create_single_source_cgal_program( "src/cdt.cpp" )
+        create_single_source_cgal_program( "src/cdt.cpp" "src/docopt/docopt.cpp")
+      else()
+        message(STATUS "NOTICE: This program requires TBB, and will not be compiled.")
+      endif()
 
   else()
 
@@ -54,13 +63,13 @@ if ( CGAL_FOUND )
 
   # Experimental TBB support
   # TBB 4.3 compatibility fixed in CGAL 4.5.1
-  find_package( TBB QUIET)
-  if (TBB_FOUND)
-    include( ${TBB_USE_FILE})
-
-    list(APPEND CGAL_3RD_PARTY_LIBRARIES ${TBB_LIBRARIES})
-
-  endif()
+  # find_package( TBB QUIET)
+  # if (TBB_FOUND)
+  #   include( ${TBB_USE_FILE})
+  #
+  #   list(APPEND CGAL_3RD_PARTY_LIBRARIES ${TBB_LIBRARIES})
+  #
+  # endif()
 
 else()
 
