@@ -53,12 +53,13 @@ if ( CGAL_FOUND )
         create_single_source_cgal_program( "src/cdt.cpp" "src/docopt/docopt.cpp")
       else()
         message(STATUS "NOTICE: This program requires TBB, and will not be compiled.")
+        return()
       endif()
 
   else()
 
     message(STATUS "NOTICE: This program requires the Eigen3 library, and will not be compiled.")
-
+    return()
   endif()
 
   # Experimental TBB support
