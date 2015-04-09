@@ -1,4 +1,4 @@
-CDT-plusplus [![Build Status](https://travis-ci.org/acgetchell/CDT-plusplus.png?branch=master)](https://travis-ci.org/acgetchell/CDT-plusplus)
+CDT-plusplus [![Build Status](https://travis-ci.org/pranavkantgaur/CDT-plusplus.svg)](https://travis-ci.org/pranavkantgaur/CDT-plusplus)
 ============
 
 **Quantize spacetime on your laptop.**
